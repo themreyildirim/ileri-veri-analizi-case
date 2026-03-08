@@ -1,0 +1,86 @@
+==============================================================
+  ELEKTRİK TÜKETİM & TAHSİLAT VERİ SETİ AÇIKLAMASI
+==============================================================
+
+Kaynak Dosya: elektrik_veri.xlsx (~137 MB, 5 sayfa)
+Kapsam: Amasya ili — Hamamözü, Gümüşhacıköy, Göynücek ilçeleri
+Format: Excel (.xlsx) → Pickle (.pkl) olarak cache'lendi
+
+--------------------------------------------------------------
+1. TAHAKKUK VERİLERİ (Elektrik Tüketim Kayıtları)
+--------------------------------------------------------------
+
+  tahakkuk.pkl     — Hamamözü ilçesi    |  124.818 kayıt  |  ~5 MB
+  tahakkuk_1.pkl   — Gümüşhacıköy ilçesi|  765.657 kayıt  |  ~33 MB
+  tahakkuk_2.pkl   — Göynücek ilçesi    |  295.223 kayıt  |  ~13 MB
+  ─────────────────────────────────────────────────────────
+  TOPLAM                                | 1.185.698 kayıt
+
+  Sütunlar (10 adet):
+    - mali_yil_donem      : Mali yıl ve dönem bilgisi
+    - il                  : İl adı (Amasya)
+    - ilce                : İlçe adı
+    - hesap_sinifi        : Müşteri tipi (Mesken, Ticarethane, Sanayi, Tarımsal Sulama vb.)
+    - sozlesme_hesap_no   : Sözleşme/hesap numarası (anonimleştirilmiş)
+    - kwh                 : Tüketilen elektrik miktarı (kWh)
+    - tuketim_tutari      : Tüketim tutarı (TL)
+    - dagitim_tutari      : Dağıtım bedeli (TL)
+    - tutar               : Toplam tutar (TL)
+    - (ek sütunlar varsa belirtilmiştir)
+
+  Benzersiz Müşteri Sayıları:
+    - Hamamözü      :  2.981
+    - Gümüşhacıköy  : 18.190
+    - Göynücek      :  7.128
+    - TOPLAM        : ~28.299
+
+  kWh İstatistikleri (birleşik):
+    - Ortalama : 92.6 kWh
+    - Medyan   : 46.6 kWh
+    - Std      : 950.4 kWh
+    - Min      : -25.371 kWh (sayaç düzeltmeleri)
+    - Max      : 153.576 kWh
+
+--------------------------------------------------------------
+2. TAHSİLAT VERİLERİ (Ödeme Kayıtları)
+--------------------------------------------------------------
+
+  tahsilat.pkl     — Müşteri ödeme kayıtları  |  636.993 kayıt  |  ~33 MB
+
+  Sütunlar (9 adet):
+    - sube               : Şube adı
+    - kasa               : Kasa bilgisi
+    - ilce               : İlçe adı
+    - sozlesme_hesap_no  : Sözleşme/hesap numarası
+    - tahsilat_tarihi    : Tahsilat tarihi
+    - nakit              : Nakit tahsilat tutarı (TL)
+    - mahsuben           : Mahsuben tahsilat tutarı (TL)
+    - kredi_karti        : Kredi kartı tahsilat tutarı (TL)
+    - banka_tahsilati    : Banka tahsilat tutarı (TL)
+
+--------------------------------------------------------------
+3. TAHSİLAT ZAMANLAMA VERİLERİ (Fatura Ödeme Zamanlaması)
+--------------------------------------------------------------
+
+  tahsilat_1.pkl   — Ödeme zamanlama verileri  |  917.632 kayıt  |  ~134 MB
+
+  Sütunlar (22 adet):
+    - mali_yil, mali_donem  : Mali yıl ve dönem
+    - il, ilce              : Konum bilgileri
+    - hesap_sinifi          : Müşteri tipi
+    - tahakkuk_tutar        : Fatura tutarı
+    - 16 ödeme zamanı sütunu: Zamanında ödeme, gecikmeli ödeme
+                              (1-15 gün, 16-30 gün, 31+ gün vb.)
+
+  Ödeme Performansı:
+    - Zamanında ödeme oranı : ~%86
+    - Gecikmeli ödeme oranı : ~%27.2
+    (Not: Kısmi ödemeler nedeniyle toplamda %100'ü aşabilir)
+
+==============================================================
+  NOT
+==============================================================
+Veri dosyaları boyut nedeniyle repo'ya dahil edilmemiştir.
+Orijinal veri, pickle (.pkl) dosyaları ile notebook'lar
+aracılığıyla yüklenmektedir.
+==============================================================
